@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: slack-clone-api
+    env: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: CLIENT_ORIGIN
+        value: https://slack-clone-six-kappa.vercel.app
+    buildFilter:
+      paths:
+        - package.json
+        - package-lock.json
+        - tsconfig.json
+        - .render.yaml
+        - src/**
