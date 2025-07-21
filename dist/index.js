@@ -27,7 +27,7 @@ const account_controller_1 = __importDefault(require("./module/account/account.c
 const workspace_user_controller_1 = __importDefault(require("./module/workspace-users/workspace-user.controller"));
 const user_controller_1 = __importDefault(require("./module/users/user.controller"));
 require("dotenv").config();
-const port = process.env.PORT || 8888;
+const port = process.env.PORT || 3000;
 const app = (0, express_1.default)();
 const httpServer = (0, http_1.createServer)(app);
 // 環境変数からオリジンを取得
