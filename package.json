@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "ts-node-dev --respawn --transpile-only --files -r tsconfig-paths/register ./src/index.ts",
     "build": "tsc -p . --skipLibCheck",
-    "start": "NODE_ENV=production node -r ./tsconfig-paths-bootstrap.js dist/src/index.js",
+    "start": "NODE_ENV=production node dist/src/index.js",
     "typeorm": "TS_NODE_TRANSPILE_ONLY=true npx ts-node ./node_modules/typeorm/cli.js -d ./src/datasource.ts",
     "migration:generate": "npm run typeorm migration:generate -- -n",
     "migration:create": "npm run typeorm migration:create -- src/migration/",
@@ -32,6 +32,7 @@
     "typeorm": "^0.3.22"
   },
   "devDependencies": {
+    "@flydotio/dockerfile": "^0.7.10",
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.3",
     "@types/jsonwebtoken": "^9.0.9",
