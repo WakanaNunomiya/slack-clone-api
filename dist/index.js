@@ -62,7 +62,9 @@ io.on("connection", (socket) => {
 datasource_1.default
     .initialize()
     .then((connection) => __awaiter(void 0, void 0, void 0, function* () {
-    httpServer.listen(port, () => console.log(`Server listening on port ${port}!`));
+    httpServer.listen({ port: Number(port), host: "0.0.0.0" }, () => {
+        console.log(`Server listening on port ${port}!`);
+    });
 }))
     .catch((error) => console.error(error));
 app.get("/", (req, res) => {
