@@ -13,7 +13,7 @@ import workspaceUserController from "./module/workspace-users/workspace-user.con
 import userController from "./module/users/user.controller";
 
 require("dotenv").config();
-const port = process.env.PORT || 8888;
+const port = process.env.PORT || 3000;
 const app: Express = express();
 const httpServer = createServer(app);
 // 環境変数からオリジンを取得
