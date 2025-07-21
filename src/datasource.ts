@@ -1,13 +1,15 @@
-import { DataSource } from 'typeorm';
+import { DataSource } from "typeorm";
+
+const isProd = process.env.NODE_ENV === "production";
 
 export default new DataSource({
-  migrationsTableName: 'migrations',
-  type: 'sqlite',
-  database: './data/slack-clone.sqlite',
+  migrationsTableName: "migrations",
+  type: "sqlite",
+  database: "./data/slack-clone.sqlite",
   synchronize: false,
   migrationsRun: true,
-  logging: ['query', 'error', 'log'],
-  entities: [process.env.DB_TYPEORM_ENTITIES || 'src/**/*.entity.ts'],
-  migrations: [process.env.DB_TYPEORM_MIGRATIONS || 'src/migration/**/*.ts'],
-  subscribers: [process.env.DB_TYPEORM_SUBSCRIBERS || 'src/subscriber/**/*.ts'],
+  logging: ["query", "error", "log"],
+  entities: [isProd ? "dist/**/*.entity.js" : "src/**/*.entity.ts"],
+  migrations: [isProd ? "dist/migration/**/*.js" : "src/migration/**/*.ts"],
+  subscribers: [isProd ? "dist/subscriber/**/*.js" : "src/subscriber/**/*.ts"],
 });
