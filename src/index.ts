@@ -56,9 +56,9 @@ io.on("connection", (socket) => {
 datasource
   .initialize()
   .then(async (connection) => {
-    httpServer.listen(port, () =>
-      console.log(`Server listening on port ${port}!`)
-    );
+    httpServer.listen({ port: Number(port), host: "0.0.0.0" }, () => {
+      console.log(`Server listening on port ${port}!`);
+    });
   })
   .catch((error) => console.error(error));
 
